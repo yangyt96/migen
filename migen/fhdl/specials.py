@@ -288,9 +288,11 @@ class Memory(Special):
         # simulation only
         return _MemoryLocation(self, index)
 
-    def get_port(self, write_capable=False, async_read=False,
-      has_re=False, we_granularity=0, mode=WRITE_FIRST,
-      clock_domain="sys", read_capable=True):
+    def get_port(self,
+      write_capable=False,
+      read_capable=True, async_read=False, has_re=False,
+      we_granularity=0, mode=WRITE_FIRST,
+      clock_domain="sys"):
         if we_granularity >= self.width:
             we_granularity = 0
         adr = Signal(max=self.depth)
